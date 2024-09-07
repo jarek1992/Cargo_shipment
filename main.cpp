@@ -3,78 +3,7 @@
 #include <vector> 
 #include <memory>
 #include <algorithm>
-
-//enum deteminating rarity level of item
-enum class Rarity {
-  Common,
-  Rare,
-  Very_Rare,
-  Almost_Unavailable
-};
-
-//base class
-class Cargo {
-public: 
-  virtual ~Cargo() = default;
-  virtual size_t getPrice() const = 0;
-  virtual std::string getName() const = 0;
-  virtual size_t getAmount() const = 0;
-  virtual size_t getBasePrice() const = 0;
-
-  Cargo(const std::string& name, size_t amount, size_t basePrice)
-    : name_(name)
-    , amount_(amount)
-    , basePrice_(basePrice)
-  {}
-
-protected:
-  std::string name_;
-  size_t amount_;
-  size_t basePrice_;
-}; 
-
-//derived classes
-class Fruit : public Cargo {
-public:
-  Fruit(const std::string& name, size_t amount, size_t basePrice, size_t expiryDays)
-    : Cargo(name, amount, basePrice)
-    , expiryDays_(expiryDays)
-    , maxExpiryDays_(expiryDays)
-  {}
-
-//implementation of virtual classes from Cargo class
-  std::string getName() const override { return name_; }
-  size_t getAmount() const override { return amount_; }
-  size_t getBasePrice() const override { return basePrice_; }
-//price according to expiry date 
-  size_t getPrice() const override {
-    if(expiryDays_ <= 0) {
-      return 0;
-    }
-    double freshnessFactor = static_cast<double>(expiryDays_) / maxExpiryDays_;
-    return static_cast<size_t>(basePrice_ * freshnessFactor * amount_); 
-  }  
-
-  size_t getExpiryDays() const { return expiryDays_; }
-
-  Fruit& operator--() {
-    if(expiryDays_ > 0) {
-      --expiryDays_;
-    }
-    return *this;
-  }
-
-protected:
-  void decreaseExpiryDays() {
-    if(expiryDays_ > 0) {
-      --expiryDays_;
-    }
-  }
-
-private:
-  size_t expiryDays_; //days until expiry (variable)
-  const size_t maxExpiryDays_; //max amount of days untill expiry (const)
-};
+#include "cargo.hpp"
 
 class Alcohol : public Cargo {
 public:
