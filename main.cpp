@@ -5,28 +5,7 @@
 #include <algorithm>
 #include "cargo.hpp"
 #include "fruit.hpp"
-
-class Alcohol : public Cargo {
-public:
-  Alcohol(const std::string& name, size_t amount, size_t basePrice, double alcoholPercentage)
-    : Cargo(name, amount, basePrice)
-    , alcoholPercentage_(alcoholPercentage)
-  {}
-
-  //implementation of virtual classes from Cargo class
-  std::string getName() const override { return name_; }
-  size_t getAmount() const override { return amount_; }
-  size_t getBasePrice() const override { return basePrice_; }
-  size_t getPrice() const override { 
-    double alcoholFactor = alcoholPercentage_ / 96.0;
-    return static_cast<size_t>(basePrice_ * alcoholFactor * amount_); 
-  }
-
-  double getAlcoholPercentage() const { return alcoholPercentage_; }
-
-private:
-  double alcoholPercentage_;
-};
+#include "alcohol.hpp"
 
 class Item : public Cargo {
 public:
@@ -105,12 +84,12 @@ public:
     return name_ + "(Dry)";
   }
   //overwriting operator--
-  DryFruit& operator--() {
-    if(++useCounter_ % 10 == 0) {
-      decreaseExpiryDays();
-    }
-    return *this;
-  }
+  // DryFruit& operator--() {
+  //   if(++useCounter_ % 10 == 0) {
+  //     decreaseExpiryDays();
+  //   }
+  //   return *this;
+  // }
 
 private:
   mutable size_t useCounter_; // counter for operator--
