@@ -1,6 +1,6 @@
 #include "alcohol.hpp"
 
-Alcohol(const std::string& name, size_t amount, size_t basePrice, double alcoholPercentage)
+Alcohol::Alcohol(const std::string& name, size_t amount, size_t basePrice, double alcoholPercentage)
     : Cargo(name, amount, basePrice)
     , alcoholPercentage_(alcoholPercentage) 
 {}
@@ -19,6 +19,6 @@ size_t Alcohol::getPrice() const {
   double alcoholFactor = alcoholPercentage_ / 96.0;
   return static_cast<size_t>(basePrice_ * alcoholFactor * amount_);
 }
-double getAlcoholPercentage() const { 
+double Alcohol::getAlcoholPercentage() const { 
     return alcoholPercentage_; 
 }
