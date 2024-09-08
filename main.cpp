@@ -4,6 +4,7 @@
 #include <memory>
 #include <algorithm>
 #include "cargo.hpp"
+#include "fruit.hpp"
 
 class Alcohol : public Cargo {
 public:
