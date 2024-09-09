@@ -33,7 +33,7 @@ void Ship::unload(Cargo *cargo) {
                                 cargo_.erase(it, cargo_.end()); // remove the cargo
                                 std::cout << "Cargo unloaded successfully" << std::endl;
                             } else {
-                            std::cout << "Cargo not found" << std::endl;
+                                std::cout << "Cargo not found" << std::endl;
                             }
 }
 
@@ -93,15 +93,16 @@ void Ship::printData() const {
             << "- name: " << name_ << '\n'
             << "- speed: " << speed_ << "knts" << '\n'
             << "- max_crew: " << maxCrew_ << " people" << '\n'
-            << "- capacity: " << capacity_ << "(tons)" << '\n'
+            << "- capacity: " << capacity_ << " tons" << '\n'
             << "- crew: " << crew_ << " people" << '\n';
   std::cout << "------------------------------------" << std::endl;
 }
 
 void Ship::transferCargo(Ship &fromShip, Ship &toShip, Cargo *cargo) {
-  auto it = std::find_if(
-      fromShip.cargo_.begin(), fromShip.cargo_.end(),
-      [cargo](const std::shared_ptr<Cargo> &c) { return c.get() == cargo; });
+  auto it = std::find_if (fromShip.cargo_.begin(), fromShip.cargo_.end(),
+                            [cargo](const std::shared_ptr<Cargo> &c) { 
+                                return c.get() == cargo; 
+                            });
 
   if (it != fromShip.cargo_.end()) {
     if (toShip.getCapacity() >=
