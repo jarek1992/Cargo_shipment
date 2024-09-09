@@ -24,15 +24,13 @@ void Ship::load(std::shared_ptr<Cargo> cargo) {
 
 void Ship::unload(Cargo *cargo) {
   auto it = std::remove_if(cargo_.begin(), cargo_.end(),
-                            [cargo, this](const std::shared_ptr<Cargo> &c) {
-                                if (c.get() == cargo) {
-                                    currentCargoWeight_ -= c->getAmount(); // update current cargo weight
-                                    return true;
-                                }
-                                return false;
+                            [cargo](const std::shared_ptr<Cargo> &c) {
+                                    return c.get() == cargo;
                             });
                             if (it != cargo_.end()) {
-                                cargo_.erase(it, cargo_.end());
+                                size_t amount = (*it)->getAmount();
+                                currentCargoWeight_ -= amount; //update current cargo weight
+                                cargo_.erase(it, cargo_.end()); // remove the cargo
                                 std::cout << "Cargo unloaded successfully" << std::endl;
                             } else {
                             std::cout << "Cargo not found" << std::endl;
