@@ -6,6 +6,17 @@ Fruit::Fruit(const std::string &name, size_t amount, size_t basePrice, size_t ex
     , maxExpiryDays_(expiryDays) 
 {}
 
+std::string Fruit::getName() const { 
+  return name_; 
+}
+size_t Fruit::getAmount() const { 
+  return amount_; 
+}
+size_t Fruit::getBasePrice() const { 
+  return basePrice_; 
+}
+
+// price according to expiry date
 size_t Fruit::getPrice() const {
   if (expiryDays_ <= 0) {
     return 0;
