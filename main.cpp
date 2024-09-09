@@ -84,12 +84,12 @@ public:
     return name_ + "(Dry)";
   }
   //overwriting operator--
-  // DryFruit& operator--() {
-  //   if(++useCounter_ % 10 == 0) {
-  //     decreaseExpiryDays();
-  //   }
-  //   return *this;
-  // }
+  DryFruit& operator--() {
+    if(++useCounter_ % 10 == 0) {
+      decreaseExpiryDays();
+    }
+    return *this;
+  }
 
 private:
   mutable size_t useCounter_; // counter for operator--
