@@ -7,33 +7,7 @@
 #include "fruit.hpp"
 #include "alcohol.hpp"
 #include "item.hpp"
-
-class DryFruit : public Fruit {
-public:
-  DryFruit(const std::string& name, size_t amount, size_t basePrice, size_t expiryDays)
-    : Fruit(name, amount, basePrice, expiryDays)
-    , useCounter_(0)
-  {}
-
-  //overwriting getPrice()
-  size_t getPrice() const override {
-    return 3 * getBasePrice() * getAmount();
-  }
-  //overwriting getName()
-  std::string getName() const override {
-    return name_ + "(Dry)";
-  }
-  //overwriting operator--
-  DryFruit& operator--() {
-    if(++useCounter_ % 10 == 0) {
-      decreaseExpiryDays();
-    }
-    return *this;
-  }
-
-private:
-  mutable size_t useCounter_; // counter for operator--
-}; 
+#include "weapon.hpp"
 
 class Ship {
 public:
@@ -46,8 +20,6 @@ public:
     , crew_(0)
     , currentCargoWeight_(0)
   {}
-
-
 //adding cargo
   void load(std::shared_ptr<Cargo> cargo) {
     size_t cargoWeight = cargo->getAmount();
@@ -58,7 +30,6 @@ public:
       std::cout << "cannot load more cargo on the ship, capacity exceeded" << std::endl;
     }
   }
-
 //removing cargo
 void unload(Cargo* cargo) {
   auto it = std::remove_if(cargo_.begin(), cargo_.end(), 
@@ -76,7 +47,6 @@ void unload(Cargo* cargo) {
     std::cout << "Cargo not found" << std::endl;
   }
 }
-
 //listing cargo 
   void listCargo() const {
     std::cout << "Cargo on ship: " << std::endl;
@@ -86,8 +56,6 @@ void unload(Cargo* cargo) {
                 << " |price: " << cargo->getPrice() << "$" << std::endl;
     }
   }
-
-
 
 //getters
   size_t getId() const { return id_; }
