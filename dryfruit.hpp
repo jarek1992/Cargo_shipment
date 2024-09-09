@@ -4,7 +4,7 @@
 
 class DryFruit : public Fruit {
 public:
-  DryFruit(const std::string& name, size_t amount, size_t basePrice, size_t expiryDays);
+  DryFruit(const std::string& name, size_t amount, size_t basePrice, size_t expiryDate);
 
   //overwriting getPrice()
   size_t getPrice() const override;
@@ -14,5 +14,5 @@ public:
   DryFruit& operator--();
 
 private:
-  mutable size_t useCounter_; // counter for operator--
+  size_t useCounter_; // counter for operator--
 }; 

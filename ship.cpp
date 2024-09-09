@@ -105,9 +105,10 @@ void Ship::transferCargo(Ship &fromShip, Ship &toShip, Cargo *cargo) {
                             });
 
   if (it != fromShip.cargo_.end()) {
-    if (toShip.getCapacity() >=
-        toShip.currentCargoWeight_ + (*it)->getAmount()) {
-      toShip.load(*it);
+    auto cargoToTransfer = *it;
+    size_t cargoAmount = cargoToTransfer->getAmount();
+    if (toShip.getCapacity() >= toShip.currentCargoWeight_ + cargoAmount) {
+      toShip.load(cargoToTransfer);
       fromShip.unload(cargo);
     } else {
       std::cout << "Not enough capacity on the target ship" << std::endl;

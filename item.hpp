@@ -4,7 +4,7 @@
 
 class Item : public Cargo {
 public:
-  Item(const std::string &name, size_t amount, size_t basePrice, Rarity rarity);
+  Item(const std::string& name, size_t amount, size_t basePrice, Rarity rarity);
 
   std::string getName() const override;
   size_t getAmount() const override;

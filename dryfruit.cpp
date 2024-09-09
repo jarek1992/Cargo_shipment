@@ -1,8 +1,7 @@
 #include "dryfruit.hpp"
-#include "fruit.hpp"
 
-DryFruit::DryFruit(const std::string &name, size_t amount, size_t basePrice, size_t expiryDays)
-    : Fruit(name, amount, basePrice, expiryDays)
+DryFruit::DryFruit(const std::string &name, size_t amount, size_t basePrice, size_t expiryDate)
+    : Fruit(name, amount, basePrice, expiryDate)
     , useCounter_(0) 
 {}
 
@@ -12,7 +11,7 @@ size_t DryFruit::getPrice() const {
 }
 // overwriting getName()
 std::string DryFruit::getName() const { 
-    return name_ + "(Dry)"; 
+    return "Dry" + Fruit::getName(); 
 }
 // overwriting operator--
 DryFruit &DryFruit::operator--() {
