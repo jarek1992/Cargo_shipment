@@ -8,23 +8,6 @@
 #include "alcohol.hpp"
 #include "item.hpp"
 
-class Weapon : public Item {
-public:
-  Weapon(const std::string&name, size_t amount, size_t price, int damage, Rarity rarity)
-    : Item(name, amount, price, rarity)
-    , damage_(damage)
-  {
-    if(damage_ < 0) {
-      throw std::invalid_argument("Damage cannot be negative");
-    }
-  }
-
-  int getDamage() const { return damage_; }
-
-private:
-  int damage_;
-};
-
 class DryFruit : public Fruit {
 public:
   DryFruit(const std::string& name, size_t amount, size_t basePrice, size_t expiryDays)
