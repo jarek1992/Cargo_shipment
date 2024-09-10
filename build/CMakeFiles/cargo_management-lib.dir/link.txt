@@ -1,2 +1,0 @@
-/usr/bin/ar qc libcargo_management-lib.a CMakeFiles/cargo_management-lib.dir/alcohol.cpp.o CMakeFiles/cargo_management-lib.dir/cargo.cpp.o CMakeFiles/cargo_management-lib.dir/dryfruit.cpp.o CMakeFiles/cargo_management-lib.dir/fruit.cpp.o CMakeFiles/cargo_management-lib.dir/item.cpp.o CMakeFiles/cargo_management-lib.dir/ship.cpp.o CMakeFiles/cargo_management-lib.dir/weapon.cpp.o
-/usr/bin/ranlib libcargo_management-lib.a
