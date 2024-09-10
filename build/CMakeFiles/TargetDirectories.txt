@@ -1,4 +1,0 @@
-/home/jarek1992/JAREK/Cargo_project/Cargo_shipment/build/CMakeFiles/cargo_management-lib.dir
-/home/jarek1992/JAREK/Cargo_project/Cargo_shipment/build/CMakeFiles/cargo_management.dir
-/home/jarek1992/JAREK/Cargo_project/Cargo_shipment/build/CMakeFiles/edit_cache.dir
-/home/jarek1992/JAREK/Cargo_project/Cargo_shipment/build/CMakeFiles/rebuild_cache.dir
