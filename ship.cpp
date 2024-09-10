@@ -14,6 +14,13 @@ Ship::Ship(size_t id, const std::string &name, size_t speed, size_t maxCrew, siz
 
 void Ship::load(std::shared_ptr<Cargo> cargo) {
   size_t cargoWeight = cargo->getAmount();
+
+  std::cout << "Attempting to load cargo: " << cargo->getName() << std::endl;
+  std::cout << "Cargo amount: " << cargo->getAmount() << std::endl;
+  std::cout << "Current cargo weight: " << currentCargoWeight_ << std::endl;
+  std::cout << "Ship capacity: " << capacity_ << std::endl;
+
+
   if (currentCargoWeight_ + cargoWeight <= capacity_) {
     cargo_.push_back(cargo);
     currentCargoWeight_ += cargoWeight; // updating current cargo weight
@@ -23,18 +30,24 @@ void Ship::load(std::shared_ptr<Cargo> cargo) {
 }
 
 void Ship::unload(Cargo *cargo) {
-  auto it = std::remove_if(cargo_.begin(), cargo_.end(),
+
+  std::cout << "Attempting to unload cargo: " << cargo->getName() << std::endl;
+  std::cout << "Current cargo weight: " << currentCargoWeight_ << std::endl;
+
+  auto it = std::find_if(cargo_.begin(), cargo_.end(),
                             [cargo](const std::shared_ptr<Cargo> &c) {
                                     return c.get() == cargo;
                             });
-                            if (it != cargo_.end()) {
-                                size_t amount = (*it)->getAmount();
-                                currentCargoWeight_ -= amount; //update current cargo weight
-                                cargo_.erase(it, cargo_.end()); // remove the cargo
-                                std::cout << "Cargo unloaded successfully" << std::endl;
-                            } else {
-                                std::cout << "Cargo not found" << std::endl;
-                            }
+  if (it != cargo_.end()) {
+    size_t amount = (*it)->getAmount();
+    currentCargoWeight_ -= amount; //update current cargo weight
+    cargo_.erase(it); // remove the cargo
+    std::cout << "Cargo unloaded successfully" << std::endl;
+  } else {
+    std::cout << "Cargo not found" << std::endl;
+  }
+
+  std::cout << "Remaining cargo weight: " << currentCargoWeight_ << std::endl;
 }
 
 void Ship::listCargo() const {
@@ -99,6 +112,12 @@ void Ship::printData() const {
 }
 
 void Ship::transferCargo(Ship &fromShip, Ship &toShip, Cargo *cargo) {
+
+  std::cout << "Attempting to transfer cargo: " << cargo->getName() << std::endl;
+  std::cout << "Source ship current cargo weight: " << fromShip.currentCargoWeight_ << std::endl;
+  std::cout << "Destination ship capacity: " << toShip.capacity_ << std::endl;
+  std::cout << "Destination ship current cargo weight: " << toShip.currentCargoWeight_ << std::endl;
+
   auto it = std::find_if (fromShip.cargo_.begin(), fromShip.cargo_.end(),
                             [cargo](const std::shared_ptr<Cargo> &c) { 
                                 return c.get() == cargo; 

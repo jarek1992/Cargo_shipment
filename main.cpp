@@ -31,7 +31,7 @@ int main() {
   std::shared_ptr<Cargo> apples = std::make_shared<Fruit>("Apples", 10000, 1, 30);
   std::shared_ptr<Cargo> rum = std::make_shared<Alcohol>("Rum", 250, 10, 40.0);
   std::shared_ptr<Cargo> ferrari = std::make_shared<Item>("Golden Armour", 1, 1000000, Rarity::Almost_Unavailable);
-  std::shared_ptr<Cargo> guns = std::make_shared<Weapon>("Sword", 200, 25, Rarity::Common);
+  std::shared_ptr<Cargo> guns = std::make_shared<Weapon>("Sword", 200, 2, 25, Rarity::Common);
   std::shared_ptr<Cargo> dryFruits = std::make_shared<DryFruit>("Carrots", 500, 2, 60);
 
   //loading cargo on the ship1
@@ -83,9 +83,6 @@ int main() {
   ship2 += 6;
   ship2 -= 3;
 
-  ship2.printData();
-  std::cout << std::endl;
-
   //testing class DryFruit
   std::cout << dryFruits->getName() << ": ";
   std::cout << "original price: " << dryFruits->getPrice() << std::endl;
@@ -94,7 +91,7 @@ int main() {
   for (int i = 0; i < 20; ++i) {
     --(*std::static_pointer_cast<DryFruit>(dryFruits));
     if (i % 5 == 0 || i == 19) {
-      std::cout << "after " << i + 1 << " uses, expiry date is: " << std::static_pointer_cast<Fruit>(dryFruits)->getExpiryDate() << std::endl;
+      std::cout << "after " << i + 1 << " uses, expiry date is: " << std::static_pointer_cast<Fruit>(dryFruits)->getExpiryDays() << std::endl;
     }
   }
 

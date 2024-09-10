@@ -10,6 +10,9 @@ public:
   size_t getBasePrice() const override;
   size_t getPrice() const override;
 
+  void setAmount(size_t amount) override;
+  void setBasePrice(size_t price) override;
+
   double getAlcoholPercentage() const;
 
 private:

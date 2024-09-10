@@ -23,7 +23,7 @@ public:
   virtual size_t getBasePrice() const = 0;
 
   virtual void setAmount(size_t amount) = 0;
-  virtual void setBasePrice(size_t price) = 0;
+  virtual void setBasePrice(size_t basePrice) = 0;
 
 protected:
   std::string name_;

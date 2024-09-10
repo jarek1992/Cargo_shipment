@@ -1,7 +1,7 @@
 #include "dryfruit.hpp"
 
-DryFruit::DryFruit(const std::string &name, size_t amount, size_t basePrice, size_t expiryDate)
-    : Fruit(name, amount, basePrice, expiryDate)
+DryFruit::DryFruit(const std::string &name, size_t amount, size_t basePrice, size_t expiryDays)
+    : Fruit(name, amount, basePrice, expiryDays)
     , useCounter_(0) 
 {}
 

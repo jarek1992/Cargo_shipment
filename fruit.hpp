@@ -11,17 +11,17 @@ public:
   size_t getAmount() const override;
   size_t getBasePrice() const override;
   // price according to expiry date
-  size_t getPrice() const override {}
+  size_t getPrice() const override;
 
   // additional methods specific for class Fruit
-  size_t getExpiryDate() const;
+  size_t getExpiryDays() const;
   Fruit &operator--();
 
   void setAmount(size_t amount) override;
-  void setBasePrice(size_t price) override;
+  void setBasePrice(size_t basePrice) override;
 
 protected:
-  void decreaseExpiryDate();
+  void decreaseExpiryDays();
 
   size_t expiryDays_;          // days until expiry (variable)
   const size_t maxExpiryDays_; // max amount of days untill expiry (const)

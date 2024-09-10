@@ -1,5 +1,6 @@
 #pragma once
 
+#include <string>
 #include "cargo.hpp"
 
 class Item : public Cargo {
@@ -12,6 +13,9 @@ public:
   size_t getPrice() const override;
 
   Rarity getRarity() const;
+
+  void setAmount(size_t amount) override;
+  void setBasePrice(size_t basePrice) override;
 
 private:
   Rarity rarity_;

@@ -1,4 +1,5 @@
 #include "item.hpp"
+#include "cargo.hpp"
 
 Item::Item(const std::string &name, size_t amount, size_t basePrice, Rarity rarity)
     : Cargo(name, amount, basePrice)
@@ -21,6 +22,13 @@ size_t Item::getPrice() const {
 }
 Rarity Item::getRarity() const { 
   return rarity_; 
+}
+
+void Item::setAmount(size_t amount) {
+  amount_ = amount;
+}
+void Item::setBasePrice(size_t basePrice) {
+  basePrice_ = basePrice;
 }
 
 // additional function helping to change the price according to rarity of item

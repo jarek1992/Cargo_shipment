@@ -34,6 +34,13 @@ Fruit &Fruit::operator--() {
   return *this;
 }
 
+void Fruit::setAmount(size_t amount) {
+  amount_ = amount;
+}
+void Fruit::setBasePrice(size_t basePrice) {
+  basePrice_ = basePrice;
+}
+
 void Fruit::decreaseExpiryDays() {
   if (expiryDays_ > 0) {
     --expiryDays_;

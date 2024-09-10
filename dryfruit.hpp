@@ -4,7 +4,7 @@
 
 class DryFruit : public Fruit {
 public:
-  DryFruit(const std::string& name, size_t amount, size_t basePrice, size_t expiryDate);
+  DryFruit(const std::string& name, size_t amount, size_t basePrice, size_t expiryDays);
 
   //overwriting getPrice()
   size_t getPrice() const override;
