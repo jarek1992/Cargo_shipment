@@ -24,8 +24,6 @@ int main() {
   ship1.printData();
   ship2.printData();
 
-  std::cout << std::endl;
-
   //declaring cargo stuff
   std::shared_ptr<Cargo> apples = std::make_shared<Fruit>("Apples", 10000, 1, 30); //name, amount, basePrice, expiryDays
   std::shared_ptr<Cargo> rum = std::make_shared<Alcohol>("Rum", 250, 10, 40.0); //name, amount, basePrice, alcoholPercentage
@@ -45,7 +43,6 @@ int main() {
   ship2.load(dryFruits);
 
   //list of cargo on the ship1
-  std::cout << "List of cargo stuff loaded on the ship1:" << std::endl;
   ship1.listCargo();
   std::cout << std::endl;
 
@@ -58,15 +55,19 @@ int main() {
       ship1.listCargo();
     }
   }
+  std::cout << std::endl;
 
   //unloading apples from ship1
-  std::cout << "Unloading apples from the ship ID-" << ship1.getId() << std::endl;
+  std::cout << "Unloading apples from the ship ID-" << ship1.getId() << ":" << std::endl;
   ship1.unload(apples.get());
+  std::cout << std::endl;
   ship1.listCargo();
+  std::cout << std::endl;
 
   //attempt of unloading non-existing stuff from the ship1
-  std::cout << "Unload cargo from the ship:" << ship1.getId() << std::endl;
+  std::cout << "Unloading cargo from the ship ID-" << ship1.getId() << ":" << std::endl;
   ship1.unload(apples.get());
+  std::cout << std::endl;
   ship1.listCargo();
   std::cout << std::endl;
 
@@ -74,8 +75,7 @@ int main() {
   std::cout << "Transfering rum from ship ID-" << ship1.getId() << " \"" << ship1.getName() << " \"" 
             << " to ship ID-"<< ship2.getId() << " \"" << ship2.getName() << " \":" << std::endl;
   ship1.transferCargo(ship1, ship2, rum.get());
- 
-  
+  std::cout << std::endl;
   ship1.listCargo();
   std::cout << std::endl;
   ship2.listCargo();
@@ -86,14 +86,14 @@ int main() {
   ship2 -= 3;
 
   //testing class DryFruit
-  std::cout << dryFruits->getName() << ": ";
-  std::cout << "original price: " << dryFruits->getPrice() << std::endl;
+  std::cout << dryFruits->getName();
+  std::cout << " original price: " << dryFruits->getPrice() << std::endl;
 
-  std::cout << "simulating dry fruit usage on ship " << ship1.getName() << ": " << std::endl;
+  std::cout << " simulating dry fruit usage on ship " << ship1.getName() << ": " << std::endl;
   for (int i = 0; i < 20; ++i) {
     --(*std::static_pointer_cast<DryFruit>(dryFruits));
     if (i % 5 == 0 || i == 19) {
-      std::cout << "after " << i + 1 << " uses, expiry date is: " << std::static_pointer_cast<Fruit>(dryFruits)->getExpiryDays() << std::endl;
+      std::cout << "  after " << i + 1 << " uses, expiry date is: " << std::static_pointer_cast<Fruit>(dryFruits)->getExpiryDays() << std::endl;
     }
   }
   return 0;
