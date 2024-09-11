@@ -11,7 +11,7 @@ size_t DryFruit::getPrice() const {
 }
 // overwriting getName()
 std::string DryFruit::getName() const { 
-    return "Dry" + Fruit::getName(); 
+    return "Dry " + Fruit::getName(); 
 }
 // overwriting operator--
 DryFruit &DryFruit::operator--() {
